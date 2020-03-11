@@ -2,13 +2,13 @@ package lk.naseeha.UserService.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class telephone {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String phoneNumber;
 

@@ -1,12 +1,19 @@
 package lk.naseeha.UserService.model;
 
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class User {
 
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
+
     String nic;
     String name;
 
@@ -15,16 +22,23 @@ public class User {
 
     String bloodGroup;
     String dateOfBirth;
-
     String email;
     String password;
-    String isDonor;
+    String userType; //Donor ,user, Admin
 
-    @OneToMany(mappedBy = "User",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     List<telephone> telephoneList;
 
-    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL)
-    List<BloodRequest> bloodRequestList;
+    /*@OneToMany(mappedBy = "User", cascade = CascadeType.ALL)
+    List<BloodRequest> bloodRequestList;*/
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
@@ -90,19 +104,19 @@ public class User {
         this.telephoneList = telephoneList;
     }
 
-    public List<BloodRequest> getBloodRequestList() {
+    /*public List<BloodRequest> getBloodRequestList() {
         return bloodRequestList;
     }
 
     public void setBloodRequestList(List<BloodRequest> bloodRequestList) {
         this.bloodRequestList = bloodRequestList;
     }
-
-    public String getIsDonor() {
-        return isDonor;
+*/
+    public String getUserType() {
+        return userType;
     }
 
-    public void setIsDonor(String isDonor) {
-        this.isDonor = isDonor;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

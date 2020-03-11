@@ -20,8 +20,8 @@ public class UserController {
     }
 
     @RequestMapping(value="/userProfile/{nic}",method = RequestMethod.GET)
-    public Optional<User> ViewProfile(@PathVariable String nic){
-        return userService.ViewProfile(nic);
+    public Optional<User> ViewProfile(@PathVariable Long id){
+        return userService.ViewProfile(id);
     }
 
     @RequestMapping(value = "/userSearch/{bloodGroup}/{location}", method = RequestMethod.GET)
@@ -32,9 +32,9 @@ public class UserController {
     //Admin
 
     @RequestMapping(value="/userDelete/{id}",method = RequestMethod.DELETE)
-    public String delete(@PathVariable String nic){
-         userService.delete(nic);
-         return nic;
+    public Long delete(@PathVariable Long id){
+         userService.delete(id);
+         return id;
     }
 
 

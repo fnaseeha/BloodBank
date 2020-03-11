@@ -3,10 +3,12 @@ package lk.naseeha.UserService.service;
 import lk.naseeha.UserService.model.User;
 import lk.naseeha.UserService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -18,8 +20,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<User> ViewProfile(String nic) {
-        return userRepository.findById(nic);
+    public Optional<User> ViewProfile(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override
@@ -28,8 +30,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void delete(String nic) {
-        userRepository.deleteById(nic);
+    public void delete(Long id) {
+        userRepository.deleteById(id);
 
     }
 
